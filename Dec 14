@@ -1,20 +1,20 @@
 <script>
-		$('.pay').click(function(){
-			
-			var ids = document.getElementsByName("cart_li");
-			var idss = [];
-			for(var i=0;i<ids.length;i++){
-				idss[i] = ids[i].attributes[1].value;
+	$('.pay').click(function(){
+
+		var ids = document.getElementsByName("cart_li");
+		var idss = [];
+		for(var i=0;i<ids.length;i++){
+			idss[i] = ids[i].attributes[1].value;
+		}
+		console.log(idss);
+		//AJAX过去id 创建订单
+		 $.ajax({
+			type:'post',
+			url:'{:U("Pay/index")}',
+			data:{id:idss},
+			success:function(rs){
+				alert(rs)
 			}
-			console.log(idss);
-			//AJAX过去id 创建订单
-			 $.ajax({
-				type:'post',
-				url:'{:U("Pay/index")}',
-				data:{id:idss},
-				success:function(rs){
-					alert(rs)
-				}
-			})//return false;
-		})
-	</script>
+		})//return false;
+	})
+</script>
